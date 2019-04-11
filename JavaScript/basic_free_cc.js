@@ -47,9 +47,36 @@ function booWho(bool) {
 booWho(false);
 
 
+function frankenSplice(arr1, arr2, n) {
+  // It's alive. It's alive!
+  let arr2copy = arr2.slice();
+  for (let i = 0; i < arr1.length; i++) {
+    arr2copy.splice(n, 0, arr1[i]);
+    n++;
+  }
+
+  console.log(arr2)
+  console.log(arr2copy);
+  return arr2copy;
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
 
 
+//Add URL slugger
+// the global variable
+var globalTitle = "Winter Is Coming";
 
+// Add your code below this line
+function urlSlug(title) {
+  
+  let arr = title.trim().split(/\s+/)
+  let lowerWords = arr.map(word => word.toLowerCase())
+  return lowerWords.join("-");
+}
+// Add your code above this line
+
+var winterComing = urlSlug(globalTitle); // Should be "winter-is-coming"
 
 
 
