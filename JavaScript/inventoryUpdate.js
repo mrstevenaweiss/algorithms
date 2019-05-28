@@ -1,30 +1,31 @@
 
+function updateInventory(curInv, newInv) {
+    // All inventory must be accounted for or you're fired!
+ 
+    let curList;
+    let newList;
+    let counter;
+    for (let newIdx in newInv) {
+    // console.log(newIdx)
+      counter = 0
 
-for (let idx in newInv) {
-//   let newItem = newInv[idx][1]
-//   let currentInv = newInv[idx][0]
-
-//   let counter = 0
-//   for (let innerIdx in curInv) {
-//     let oldItem = curInv[innerIdx][1] 
-//     let oldInv = curInv[innerIdx][0]
-//     console.log(oldInv)
-
-//     console.log('new:  ', newItem, 'old:  ', oldItem)
-//     counter++
-//     // console.log(counter)
-
-//     if (newItem == oldItem) {
-//       let newQuant = currentInv + oldInv
-//       console.log(currentInv, oldInv, newQuant)
-//       console.log(curInv[idx][0])
-//       curInv[idx][0] = newQuant
-//       counter = 0
-//       break
-//     } 
-//   }
-//   if (counter > 0) {
-//     curInv.push(newInv[idx])
-//   }
-// }
-// console.log(curInv)
+      for (let curIdx in curInv) {
+        curList = curInv[curIdx]
+        newList = newInv[newIdx]
+        // console.log(curList);
+        counter += 1
+        if (newList[1] == curList[1]) {
+          // console.log('NEW: ', newList, 'CURRENT: ', curList)  
+          curList[0] += newList[0]      
+          // console.log('CURRENT: ', curList)  
+          counter = 0
+          break
+        }  
+      }
+      if (counter > 0) {
+        curInv.push(newList)
+        counter = 0
+      }
+    }
+  return curInv;
+}
