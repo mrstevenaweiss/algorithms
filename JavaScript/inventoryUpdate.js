@@ -1,10 +1,21 @@
-
 function updateInventory(curInv, newInv) {
-    // All inventory must be accounted for or you're fired!
- 
     let curList;
     let newList;
     let counter;
+    console.log(curInv)
+    if (curInv.length == 0) {
+            newInv.sort(function (a, b) {
+          if (a[1] > b[1]) {
+              return 1;
+          }
+          if (a[1] < b[1]) {
+              return -1;
+          }
+          return 0;
+      });
+      return newInv
+    }
+
     for (let newIdx in newInv) {
     // console.log(newIdx)
       counter = 0
@@ -27,5 +38,18 @@ function updateInventory(curInv, newInv) {
         counter = 0
       }
     }
-  return curInv;
+
+    curInv.sort(function (a, b) {
+        if (a[1] > b[1]) {
+            return 1;
+        }
+        if (a[1] < b[1]) {
+            return -1;
+        }
+        return 0;
+    });
+    
+    return curInv;
 }
+
+
