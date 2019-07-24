@@ -16,13 +16,13 @@ def isPalindrome(s):
 
     return isPal(toChars(s))
 
-def testPal(words):
+def testIsPal(words):
   for word in words:
     if isPalindrome(word) == True:
       print(word, 'is a palindrome')
     else: 
       print(word, 'is not a palindrome')
 
-words = ['abba', 'cat', 'help', 'aaa']
+words = ['abba', 'cat', 'help', 'aaa', '']
 
-testPal(words)
+testIsPal(words)
