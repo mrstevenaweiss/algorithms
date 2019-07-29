@@ -39,7 +39,7 @@ word = "cici"
 
 print(checker( word ))
 
-  def has_palindrome_permutation(the_string):
+def has_palindrome_permutation(the_string):
     # Track characters we've seen an odd number of times
     unpaired_characters = set()
 
