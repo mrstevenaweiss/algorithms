@@ -15,16 +15,23 @@ def largest_palindrome_product(): #test
   second = 999
   number = 1
   pal = False
+  row_loop = 1
+  different  = 0
 
   while pal == False:
     number = first * second
     pal = is_palindrome(number)
     second = second - 1
-    if second == 100:
-      second = 999
+    print(row_loop, 'first', first, 'second', second, number)
+    if row_loop == (99-different):
+      second = first
       first = first - 1
+      row_loop = 0
+      different += 1
+    row_loop += 1
 
-  print(pal, first, second, number)
+  # print(pal, first, second, number)
+
 
 start = time.time()
 largest_palindrome_product()
