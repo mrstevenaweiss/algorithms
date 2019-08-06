@@ -11,6 +11,7 @@ Find the product abc.
 
 a+b+c (unsquared must == 1000)  &&  must be pythagorean triplet...
 """
+
 bound = 500
 pythags = []
 Cs = []

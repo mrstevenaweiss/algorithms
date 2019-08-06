@@ -31,7 +31,6 @@ def get_primes(a_num):
 
 start = time.time()
 print(get_primes(2000000))
-# print(primes[10001-1])
 end = time.time()
 print('Processed in ', end - start, 'seconds')
 
