@@ -1,21 +1,37 @@
 
 import time
-import primer
 
 '''
 By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
 What is the 10 001st prime number?
 
 '''
-# def get_prime():
-primes_list = primer.Primer()
+primes = []
 
-# for i in range(1000000):
-#     primes_list.is_prime(i)
-print(primes_list.cache, '\n')
+def is_prime(n):
+  if n == 2 or n == 3: return True
+  if n < 2 or n%2 == 0: return False
+  if n < 9: return True
+  if n%3 == 0: return False
+  r = int(n**0.5)
+  f = 5
+  while f <= r:
+    # print('\t',f)
+    if n%f == 0: return False
+    if n%(f+2) == 0: return False
+    f += 6
+  return True
+
+def get_primes(a_num):
+    for i in range(2, a_num):
+        prime_bool = is_prime(i)
+        if prime_bool == True:
+            primes.append(i)
+    return primes
 
 start = time.time()
-print(primes_list.cache[2])
+print(get_primes(2000000))
+# print(primes[10001-1])
 end = time.time()
 print('Processed in ', end - start, 'seconds')
 
