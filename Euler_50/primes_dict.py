@@ -15,6 +15,6 @@ test = "hello world"
 # print('length of primes', len(primes))
 
 start = time.time()
-print(primes[10001-1])
+# print(primes[10001-1])
 end = time.time()
 print('Processed in ', end - start, 'seconds')
