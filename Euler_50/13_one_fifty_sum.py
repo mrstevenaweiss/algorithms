@@ -259,6 +259,9 @@ one_fifty_sum()
 end = time.time()
 print('Processed in ', end - start, 'seconds')
     
+# the same code without a double for loop...
+# total = sum(map(int, open('some.txt')))
+# print "Top 10 digits of sum =", str(total)[:10]
 
 
 
