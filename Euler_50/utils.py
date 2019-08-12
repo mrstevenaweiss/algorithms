@@ -1,7 +1,9 @@
 
 import time
 
-
+def reverse(string): 
+    string = string[::-1] 
+    return string 
 
 def isqrt(n):
     "Integer square root (rounds down)."

@@ -1,5 +1,4 @@
 import time
-import decimal
 
 """
 Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
@@ -209,27 +208,154 @@ large_number = [
     53503534226472524250874054075591789781264330331690
     ]
 
-number = "00000000000000000000000000000000000000000000000000"
-# print(len (number) )
 
-multi = .00000000000000000000000000000000000000000000000001
-print( multi )
+large_ish_test = ['7986', '0815']
 
-a = float( 20849603980134001723930671666823555245252804609722 * .00000000000000000000000000000000000000000000000001 )
-b = float( 53503534226472524250874054075591789781264330331690 * .00000000000000000000000000000000000000000000000001 )
-# print('ab', float( a + b ) )
+def one_fifty_sum():
+    """ After adding everything and binary addition and whatever, left to right addition with carry solved this. """
+
+    long_stringified = []
+    for number in large_number:
+        long_stringified.append(str(number))
+    # print(long_stringified)
+    # print('len of numbers', len( long_stringified ))
+
+    stringified = []
+    for number in long_stringified:
+        stringified.append(number[:11])
+    print('nums are strings', stringified)
+
+    to_add = []
+
+    length_of_num =  len(stringified[0])
+    zeroes = length_of_num-1
+
+    for i in range(length_of_num):
+        # print('column', i)
+        sum = 0
+        for j in range(len(stringified)):
+            # print('sum', sum)
+            # print('digit', stringified[j][i])
+            sum += int(stringified[j][i])
+        add_zero = '0' * zeroes
+        sum = str(sum)
+        # print( type(sum) )
+        # print( type(add_zero) )
+        num = sum + add_zero
+        zeroes = zeroes - 1
+        print('column', i, sum)
+        new_num = int(num)
+        # print(new_num, type(new_num) )
+        to_add.append( new_num )
+
+        total=0
+        for element in to_add:
+            total+=element
+        print(total)
+
+
+start = time.time()
+one_fifty_sum()
+end = time.time()
+print('Processed in ', end - start, 'seconds')
+    
+
+
+
+# Other approaches
 
 large_ish = [
     41503128880339536053299340368006977710650566631954,
     81234880673210146739058568557934581403627822703280,
     82616570773948327592232845941706525094512325230608,
-    22918802058777319719839450180888072429661980811197,
-    77158542502016545090413245809786882778948721859617,
-    72107838435069186155435662884062257473692284509516,
-    20849603980134001723930671666823555245252804609722,
-    53503534226472524250874054075591789781264330331690
-]
-print('large_ish', sum(large_ish))
+    22918802058777319719839450180888072429661980811197
+] 
+
+# a = 7986
+# b =  815
+# print(7000+ 1700 + 90 + 11)
+
+# nums = [41503128880, 81234880673, 82616570773, 22918802058]
+# # num_str = ['41503128880', '81234880673', '82616570773', '22918802058']
+
+# intify = []
+# for number in to_add:
+#     intify.append(int(number))
+# # print(intify)
+# print( type(to_add) )
+
+# # intify digits, then stringify arithmetic
+# column_sum = str( 7 + 0)
+# print(sum(intify))
+# # add the 0000s
+# to_add.append( column_sum + ('0' * (len(num_str[0])-1)))
+# print( column_sum + ('0' * (len(num_str[0])-1)) )
+# # add result to a list
+
+# print( len(num_str[0]) )
+# # add first column
+# print(num_str[0][1], num_str[1][1])
+# # intify digits, then stringify arithmetic
+# column_sum = str( 9 + 8)
+# # add the 0000s
+# to_add.append( column_sum + ('0' * (len(num_str[0])-1-1)))
+# print( column_sum + ('0' * (len(num_str[0])-1-1)))
+# # add result to a list
+
+# print( len(num_str[0]) )
+# # add first column
+# print(num_str[0][2], num_str[1][2])
+# # intify digits, then stringify arithmetic
+# column_sum = str( 8 + 1)
+# # add the 0000s
+# to_add.append( column_sum + ('0' * (len(num_str[0])-1-1-1))) 
+# print( column_sum + ('0' * (len(num_str[0])-1-1-1)))
+# # add result to a list
+
+# print( len(num_str[0]) )
+# # add first column
+# print(num_str[0][3], num_str[1][3])
+# # intify digits, then stringify arithmetic
+# column_sum = str( 6 + 5)
+# # add the 0000s
+# to_add.append( column_sum + ('0' * (len(num_str[0])-1-1-1-1))) 
+# print( column_sum + ('0' * (len(num_str[0])-1-1-1-1)))
+# # add result to a list
+
+
+# # grab digit
+# print(stringified[0][-1], stringified[1][-1], stringified[2][-1], stringified[3][-1])
+
+# # intify
+# print( int(stringified[0][-1]), int(stringified[1][-1]), int(stringified[2][-1]), int(stringified[3][-1]) )
+
+# # append to an array
+# print( [int(stringified[0][-1]), int(stringified[1][-1]), int(stringified[2][-1]), int(stringified[3][-1])] )
+
+# # add
+# print( sum([int(stringified[0][-1]), int(stringified[1][-1]), int(stringified[2][-1]), int(stringified[3][-1])] ))
+
+# # store & carry
+# number = sum([int(stringified[0][0]), int(stringified[1][0]), int(stringified[2][0]), int(stringified[3][0])] )
+
+
+# def reverse(string): 
+#     string = string[::-1] 
+#     return string 
+
+# # print( str(large_ish[0])) 
+# print('reversed' reverse( str(large_ish[0])) )
+
+# step 0: create a string
+# step 1: reverse string
+# step 2: grab N number
+# step 3: add numbers
+# step 4: convert number to a string 
+# step 5: add to empty string the ones
+# step 6: carry over the tens digit
+
+
+# Trying my hand at binary addition...
 
 # print(decimal.Decimal(77158542502016545090413245809786882778948721859617) + decimal.Decimal(72107838435069186155435662884062257473692284509516) + decimal.Decimal(53503534226472524250874054075591789781264330331690) + decimal.Decimal(20849603980134001723930671666823555245252804609722) )
 # sums = 0
@@ -240,15 +366,10 @@ print('large_ish', sum(large_ish))
 
 # print (41 + 50 + 31 + 28 + 88 + 3 + 39 + 53 + 60 + 53 + 29+93+40+36+80+6 + 97+77+10+65+5+66+63+19+ 54 + 41 + 50 + 31 + 28 + 88 + 3 + 39 + 53 + 60 + 53 + 29+93+40+36+80+6 + 97+77+10+65+5+66+63+19+ 54 )
 
-start = time.time()
-# print( sum(large_number) )
-end = time.time()
-print('Processed in ', end - start, 'seconds')
-
-A = 20849603980134001723930671666823555245252804609722
-B = 53503534226472524250874054075591789781264330331690
-C = 72107838435069186155435662884062257473692284509516
-print('py addition', A + B + C)
+# A = 20849603980134001723930671666823555245252804609722
+# B = 53503534226472524250874054075591789781264330331690
+# C = 72107838435069186155435662884062257473692284509516
+# print('py addition', A + B + C)
 
 # 20849603980134001723930671666823555245252804609722
 # binary translation 11100100010000010000100100111100011011010010110100001110110001101111101100000001001101011001111001000001100111110001011010010000101001110110011000000000011010111010
@@ -259,8 +380,8 @@ print('py addition', A + B + C)
 # 72107838435069186155435662884062257473692284509516
 # binary translation 1100010101011010010011010011011111001000010011001110101001000011010000111111110100001111111010011101101011001101011000001001001010001000011000010110000101110101001100
 
-print('A+B in binary', 1100101101111111011110000001110100001101101111110110001100101001000111010111011001001100000111011100100011001100010001010011000110110011000011110001110001110011100100)
-print('A+B in decimal confirmed', 74353138206606525974804725742415345026517134941412)
+# print('A+B in binary', 1100101101111111011110000001110100001101101111110110001100101001000111010111011001001100000111011100100011001100010001010011000110110011000011110001110001110011100100)
+# print('A+B in decimal confirmed', 74353138206606525974804725742415345026517134941412)
 
-print('A+B+C in binary', 11001000011011001110001010101010011010110000011000100110101101100011000010111001101011100000001111010001110011001101001011100010000111011011100000111110111101000110000)
-print('A+B+C in decimal confirmed', 146460976641675712130240388626477602500209419450928)
+# print('A+B+C in binary', 11001000011011001110001010101010011010110000011000100110101101100011000010111001101011100000001111010001110011001101001011100010000111011011100000111110111101000110000)
+# print('A+B+C in decimal confirmed', 146460976641675712130240388626477602500209419450928)
