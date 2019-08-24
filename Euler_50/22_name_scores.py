@@ -11,7 +11,53 @@ What is the total of all the name scores in the file?
 
 """
 
+# OPEN FILE
+names = open("p022_names.txt", "r")
+lines = names.read().split(',')
+# print(lines)
 
+# # STRIP EXCESS QUOTES AND SORT WORDS
+new_lines = []
+for word in lines:
+    word = word.replace('"', '') 
+    new_lines.append(word)
+# print(new_lines)
+# print('sorted', sorted(new_lines))
+
+# CREATE NEW FILE WITH SORTED.
+alpha = [None, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+names_dict = {}
+
+sorted_names = open("test_words.txt", "r")
+# LOOK AT EACH LETTER & CREATE MATH DICTIONARY
+with sorted_names as f:
+    position = 1
+    sum = 0
+    while True:
+        c = f.read(1)
+        if not c:
+            print ("End of file")
+            break
+        if c == "'" or c == ",":
+            continue
+        elif c == ' ':
+            # print(c, ' it a space', position )
+            names_dict[position] = sum
+            position += 1
+            sum = 0
+        else:
+            # print ("Read a character:", c, alpha.index(c), sum, names_dict)
+            sum += alpha.index(c)
+    # print(names_dict)
+        
+# MULTIPLY THE POSITION & SUM & add everything
+big_sum = 0
+for key in names_dict:
+    # print(key)
+    num = key * names_dict[key]
+    big_sum += num
+
+print(big_sum)
 
 start = time.time()
 end = time.time()
