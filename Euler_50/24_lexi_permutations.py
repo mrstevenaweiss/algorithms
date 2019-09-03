@@ -9,7 +9,14 @@ The lexicographic permutations of 0, 1 and 2 are:
 
 What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
 
+Pseudo:
+0. Heap's Algo
+1. Change #'s to strings/ints
+2. Sort
+
 """
+
+
 # numbers = [120, 12, 201, 210, 21, 102]
 inputs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 # inputs = [0, 1, 2]

@@ -1,4 +1,3 @@
-import time
 """
 The Fibonacci sequence is defined by the recurrence relation:
 
@@ -22,9 +21,31 @@ The 12th term, F12, is the first term to contain three digits.
 What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
 
 """
+import time
+import math
 
+five  = math.sqrt(5)
+first = 1 / five
+second = (1 + five) / 2
+third = (1 - five) / 2
 
+def len_closed_fib(n):
+    body = (second**n) - (third**n)
+    fib = int(first * body)
+    return fib, len( str(fib) )
+
+def get_thousand():
+    length = 0
+    number = 0
+    index = 0
+
+    while length != 1000:
+        number, length = len_closed_fib(index)
+        index += 1
+    print(number, index-1)    
 
 start = time.time()
+# print(closed_fib(12))
+get_thousand()
 end = time.time()
 print('Processed in ', end - start, 'seconds')
