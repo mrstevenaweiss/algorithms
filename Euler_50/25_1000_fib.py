@@ -23,11 +23,15 @@ What is the index of the first term in the Fibonacci sequence to contain 1000 di
 """
 import time
 import math
+from decimal import *
+getcontext().prec = 1000
 
-five  = math.sqrt(5)
+five  = Decimal(5).sqrt()
 first = 1 / five
 second = (1 + five) / 2
 third = (1 - five) / 2
+
+# print(five)
 
 def len_closed_fib(n):
     body = (second**n) - (third**n)
